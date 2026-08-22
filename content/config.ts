@@ -11,8 +11,8 @@ export const identity = {
   siteName: "Nicolas",
   /** URL finale du site, sert aussi de base aux métadonnées. */
   siteUrl: "https://nicolas.example",
-  email: "hello@nicolas.example",
-  linkedin: "https://www.linkedin.com/in/nicolas-xxxx",
+  email: "nicolas.jegou2006@gmail.com",
+  linkedin: "https://www.linkedin.com/in/nicolas-jegou-201727297/",
   github: "https://github.com/njegou",
 };
 

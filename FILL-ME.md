@@ -5,9 +5,7 @@ ne sera pas publiable tel quel. En développement, la console du navigateur
 liste automatiquement ce qui reste (voir `components/ContentCheck.tsx`).
 
 ## 1. Identité — `content/config.ts`
-- [ ] `identity.email` — remplace `hello@nicolas.example`
-- [ ] `identity.linkedin` — l'URL exacte de ton profil
-- [ ] `identity.github` — vérifie le pseudo
+- [x] `identity.email`, `identity.linkedin`, `identity.github`
 - [ ] `identity.siteUrl` — le domaine final (sert aux métadonnées et à l'aperçu OG)
 - [ ] `identity.logo` — "N.JGU" par défaut, change-le si tu veux autre chose
 - [ ] `aviation.airfield` / `aircraft` / `goal` — tes vraies infos
@@ -24,6 +22,10 @@ d'échouer en silence.
       chiffres plausibles que j'ai inventés, à remplacer par les vrais ou à
       reformuler sans chiffre
 - [ ] Les `links` vides : dépôt GitHub, démo, article, post LinkedIn
+- [ ] `metric.value` valant `"??"` : le chiffre affiché en grand sur les cartes
+      Business (pour l'instant, seule la com LinkedIn NukkAI est concernée)
+- [ ] Vérifie les champs `date` (AAAA-MM) : ils fixent l'ordre chronologique
+      de la galerie, indépendamment du libellé `year` affiché
 - [ ] Optionnel : un visuel par projet dans `public/projects/<slug>.webp`,
       puis renseigner le champ `cover`
 

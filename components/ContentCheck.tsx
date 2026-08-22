@@ -18,6 +18,7 @@ export default function ContentCheck() {
     projects.forEach((p) => {
       if (/à confirmer|to confirm|à compléter|to fill in/i.test(p.result.fr + p.result.en)) todo.push(`content/projects.ts → résultat provisoire sur "${p.title}"`);
       if (p.links.length === 0) todo.push(`content/projects.ts → aucun lien sur "${p.title}"`);
+      if (p.metric?.value === "??") todo.push(`content/projects.ts → chiffre manquant sur la carte "${p.title}"`);
     });
     if (todo.length) console.warn(`[portfolio] ${todo.length} élément(s) à remplir :\n` + todo.map((l) => "  · " + l).join("\n"));
   }, []);

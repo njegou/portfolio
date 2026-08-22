@@ -2,7 +2,7 @@ import type { Project } from "./types";
 
 // TODO(Nicolas) : liens réels, chiffres réels, visuels. Les résultats marqués
 // "(à confirmer)" sont du faux contenu réaliste à remplacer.
-export const projects: Project[] = [
+const all: Project[] = [
   {
     slug: "skysearch",
     code: "LFPG",
@@ -10,6 +10,8 @@ export const projects: Project[] = [
     tagline: { fr: "Chercher un vol comme on parlerait à un agent au comptoir.", en: "Search a flight the way you'd ask an agent at the desk." },
     tags: ["Tech", "Aviation"],
     year: "2026",
+    date: "2026-04",
+    size: "wide",
     context: {
       fr: "Les moteurs d'horaires obligent à remplir six champs pour une question simple. SkySearch prend une phrase (« vols Paris Lisbonne demain matin ») et renvoie les horaires, avec renvoi vers FlightAware ou Flightradar24 pour le statut temps réel.",
       en: "Schedule search engines make you fill six fields for one simple question. SkySearch takes a sentence and returns flights, with hand-off to FlightAware or Flightradar24 for live status.",
@@ -26,6 +28,8 @@ export const projects: Project[] = [
     tagline: { fr: "Un majordome self-hosted qui demande la permission avant de casser quelque chose.", en: "A self-hosted butler that asks before doing anything irreversible." },
     tags: ["Tech", "Data"],
     year: "2025",
+    date: "2025-09",
+    size: "wide",
     context: {
       fr: "Architecture hébergée sur NAS Synology via n8n. Google Calendar sert de source de vérité, un bot Telegram valide les actions irréversibles, l'accès distant passe par Tailscale.",
       en: "Hosted on a Synology NAS via n8n. Google Calendar is the source of truth, a Telegram bot gates irreversible actions, remote access goes through Tailscale.",
@@ -42,6 +46,7 @@ export const projects: Project[] = [
     tagline: { fr: "Mot d'activation, oreille locale, cerveau dans le cloud.", en: "Wake word, local ears, cloud brain." },
     tags: ["Tech"],
     year: "2026",
+    date: "2026-02",
     context: {
       fr: "Assistant vocal standalone : détection du mot d'activation, transcription, synthèse vocale locale, LLM en API pour le raisonnement. Capable de manipuler l'écran.",
       en: "Standalone voice assistant: wake-word detection, transcription, local TTS, LLM over API for reasoning. Can drive the screen.",
@@ -58,6 +63,8 @@ export const projects: Project[] = [
     tagline: { fr: "Un SDR qui adapte son discours au métier en face, et qui ne dort pas.", en: "An SDR that tailors its pitch to the job title, and never sleeps." },
     tags: ["Tech", "Business"],
     year: "2026",
+    date: "2026-01",
+    size: "wide",
     context: {
       fr: "Agent IA hybride LinkedIn / email construit sur n8n. Discours généré selon le métier du prospect, relances pilotées par Salesforce Flow.",
       en: "Hybrid LinkedIn / email AI agent built on n8n. Pitch generated from the prospect's role, follow-ups driven by Salesforce Flow.",
@@ -74,10 +81,13 @@ export const projects: Project[] = [
     tagline: { fr: "Refonte et migration du CRM d'une startup IA de 19 personnes.", en: "Rebuilding and migrating the CRM of a 19-person AI startup." },
     tags: ["Business", "Data"],
     year: "2025",
+    date: "2025-03",
     context: { fr: "Modèle de données repensé, nettoyage, import, formation de l'équipe commerciale.", en: "Redesigned data model, cleanup, import, sales team onboarding." },
     role: { fr: "Pilotage du projet de bout en bout.", en: "End-to-end project ownership." },
     stack: ["Salesforce", "Data cleaning", "Flow", "Reporting"],
     result: { fr: "Un pipeline lisible par toute l'équipe, reporting hebdo automatisé.", en: "A pipeline the whole team can read, automated weekly reporting." },
+    metric: { value: "19", label: { fr: "personnes équipées", en: "people onboarded" } },
+    series: [0.2, 0.35, 0.3, 0.55, 0.7, 0.65, 0.9, 1],
     links: [],
   },
   {
@@ -86,11 +96,14 @@ export const projects: Project[] = [
     title: "Communication LinkedIn NukkAI",
     tagline: { fr: "Faire parler une boîte d'IA explicable sans jargon.", en: "Making an explainable-AI company talk without jargon." },
     tags: ["Business"],
-    year: "2024-2026",
+    year: "2024 →",
+    date: "2026-08",
+    ongoing: true,
     context: { fr: "Gestion et stratégie de la communication LinkedIn de l'entreprise.", en: "Running and shaping the company's LinkedIn communication." },
     role: { fr: "Ligne éditoriale, calendrier, rédaction, visuels, analyse.", en: "Editorial line, calendar, writing, visuals, analytics." },
     stack: ["LinkedIn", "Canva", "Analytics"],
     result: { fr: "Portée mensuelle multipliée (chiffre à compléter).", en: "Monthly reach multiplied (figure to fill in)." },
+    metric: { value: "??", label: { fr: "de portée mensuelle", en: "monthly reach" } },
     links: [{ label: "NukkAI", href: "https://nukk.ai" }],
   },
   {
@@ -100,10 +113,12 @@ export const projects: Project[] = [
     tagline: { fr: "Plan de communication multicanal pour un club en montée.", en: "Multichannel communication plan for a rising club." },
     tags: ["Business"],
     year: "2025",
+    date: "2025-05",
     context: { fr: "Projet académique : diagnostic, cibles, canaux, calendrier et KPIs.", en: "Academic project: diagnosis, targets, channels, calendar and KPIs." },
     role: { fr: "Stratégie et recommandations.", en: "Strategy and recommendations." },
     stack: ["Étude de marché", "Persona", "Plan média"],
     result: { fr: "Recommandation présentée au jury.", en: "Recommendation presented to the jury." },
+    metric: { value: "4", label: { fr: "canaux orchestrés", en: "channels orchestrated" } },
     links: [],
   },
   {
@@ -113,6 +128,7 @@ export const projects: Project[] = [
     tagline: { fr: "Des recommandations musicales branchées sur Apple Music.", en: "Music recommendations wired into Apple Music." },
     tags: ["Tech"],
     year: "2025",
+    date: "2025-07",
     context: { fr: "PWA de recommandation musicale basée sur MusicKit JS.", en: "Music recommendation PWA built on MusicKit JS." },
     role: { fr: "Dev complet.", en: "Full build." },
     stack: ["MusicKit JS", "PWA", "TypeScript"],
@@ -126,10 +142,12 @@ export const projects: Project[] = [
     tagline: { fr: "Voir enfin combien coûtent tous ces abonnements.", en: "Finally see what all those subscriptions cost." },
     tags: ["Tech", "Data"],
     year: "2024",
+    date: "2024-11",
     context: { fr: "App de suivi d'abonnements : échéances, total mensuel, alertes.", en: "Subscription tracker: due dates, monthly total, alerts." },
     role: { fr: "Conception et dev.", en: "Design and build." },
     stack: ["TypeScript", "PWA", "IndexedDB"],
     result: { fr: "Utilisé au quotidien.", en: "Used daily." },
+    series: [0.5, 0.4, 0.62, 0.55, 0.8, 0.7, 0.45, 0.9],
     links: [],
   },
   {
@@ -139,10 +157,12 @@ export const projects: Project[] = [
     tagline: { fr: "Création publicitaire pour un petit-déjeuner bio.", en: "Ad creative for an organic breakfast brand." },
     tags: ["Business"],
     year: "2024",
+    date: "2024-04",
     context: { fr: "Projet académique : concept, accroche, déclinaisons print et social.", en: "Academic project: concept, tagline, print and social variants." },
     role: { fr: "Concept et direction créative.", en: "Concept and creative direction." },
     stack: ["Canva", "Copywriting"],
     result: { fr: "Campagne présentée en cours.", en: "Campaign presented in class." },
+    metric: { value: "3", label: { fr: "déclinaisons print et social", en: "print and social variants" } },
     links: [],
   },
   {
@@ -152,10 +172,15 @@ export const projects: Project[] = [
     tagline: { fr: "Toutes les compagnies, codes OACI/IATA, flottes, dans une base propre.", en: "Every airline, ICAO/IATA codes, fleets, in one clean database." },
     tags: ["Data", "Aviation"],
     year: "2025",
+    date: "2025-01",
     context: { fr: "Modélisation relationnelle et alimentation d'une base compagnies aériennes.", en: "Relational modelling and loading of an airline database." },
     role: { fr: "Modélisation, import, requêtes.", en: "Modelling, import, queries." },
     stack: ["SQL", "Python", "pandas"],
     result: { fr: "Plus de 5 000 compagnies référencées (à confirmer).", en: "5,000+ airlines referenced (to confirm)." },
+    series: [0.15, 0.3, 0.28, 0.5, 0.62, 0.78, 0.85, 1],
     links: [],
   },
 ];
+
+/** Les projets sont toujours servis du plus récent au plus ancien. */
+export const projects: Project[] = [...all].sort((a, b) => b.date.localeCompare(a.date));

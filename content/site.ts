@@ -35,7 +35,7 @@ export const dict = {
     projects: {
       label: "Projets",
       title: "Plan de vol.",
-      sub: "Filtre par tag. Ouvre une carte pour le détail.",
+      sub: "Du plus récent au plus ancien. Filtre par tag, ouvre une carte pour le détail.",
       all: "Tous",
       open: "Ouvrir",
       close: "Fermer",
@@ -106,7 +106,7 @@ export const dict = {
         ["Training", "Student pilot"],
       ],
     },
-    projects: { label: "Projects", title: "Flight plan.", sub: "Filter by tag. Open a card for details.", all: "All", open: "Open", close: "Close", context: "Context", role: "Role", stack: "Stack", result: "Outcome", links: "Links", drag: "Scroll to browse" },
+    projects: { label: "Projects", title: "Flight plan.", sub: "Most recent first. Filter by tag, open a card for details.", all: "All", open: "Open", close: "Close", context: "Context", role: "Role", stack: "Stack", result: "Outcome", links: "Links", drag: "Scroll to browse" },
     stack: {
       label: "Stack & skills",
       title: "What I do, and what I do it with.",

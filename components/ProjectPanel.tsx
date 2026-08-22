@@ -38,7 +38,10 @@ export default function ProjectPanel({ p, onClose }: { p: Project; onClose: () =
         className="relative h-full w-full md:w-[640px] bg-bg border-l border-line overflow-y-auto p-6 md:p-10"
         initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", stiffness: 260, damping: 32 }}>
         <div className="flex items-center justify-between mb-10">
-          <Scramble text={`${p.code} / ${p.year}`} className="text-xs uppercase tracking-widest text-accent" />
+          <span className="flex items-center gap-2">
+            {p.ongoing && <span className="lit size-1.5 rounded-full bg-accent animate-pulse" aria-hidden />}
+            <Scramble text={`${p.code} / ${p.year}`} className="text-xs uppercase tracking-widest text-accent" />
+          </span>
           <button onClick={onClose} className="btn !py-2 !px-4">{t.projects.close} <span aria-hidden>✕</span></button>
         </div>
         <h2 id="panel-title" className="font-display font-extrabold text-4xl md:text-5xl tracking-tight mb-3">{p.title}</h2>
