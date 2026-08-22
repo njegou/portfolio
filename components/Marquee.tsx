@@ -9,7 +9,7 @@ export default function Marquee() {
       <div className="marquee-track" aria-hidden>
         {items.map((it, i) => (
           <span key={i} className="font-display text-2xl md:text-4xl font-semibold px-8 flex items-center gap-8 whitespace-nowrap">
-            {it}<span className="size-2 rounded-full bg-accent" />
+            {it}<span className="lit size-2 rounded-full bg-accent" />
           </span>
         ))}
       </div>

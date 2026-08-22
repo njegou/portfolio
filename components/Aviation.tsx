@@ -40,7 +40,7 @@ export default function Aviation() {
           </div>
         </div>
 
-        <svg viewBox="0 0 600 420" className="w-full" role="img" aria-label="Schéma de tour de piste">
+        <svg viewBox="0 0 600 420" className="w-full" role="img" aria-label={t.a11y.circuit}>
           <defs>
             <pattern id="g" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="var(--grid)" /></pattern>
           </defs>
@@ -52,7 +52,7 @@ export default function Aviation() {
           <path id="circuit" d="M240 309 L 120 309 C 60 309, 60 120, 120 120 L 480 120 C 540 120, 540 309, 480 309 L 370 309"
             fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="1400" strokeDashoffset="1400" />
           <path d="M240 309 L 120 309 C 60 309, 60 120, 120 120 L 480 120 C 540 120, 540 309, 480 309 L 370 309" fill="none" stroke="var(--line)" strokeWidth="1" strokeDasharray="4 6" />
-          {["Vent arrière", "Base", "Finale"].map((l, i) => (
+          {t.aviation.legs.map((l, i) => (
             <text key={l} x={[300, 510, 440][i]} y={[108, 215, 296][i]} textAnchor="middle" fill="var(--fg-muted)" fontFamily="var(--font-mono)" fontSize="9" letterSpacing="2">{l.toUpperCase()}</text>
           ))}
           <g id="plane">

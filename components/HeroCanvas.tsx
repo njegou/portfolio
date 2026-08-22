@@ -22,6 +22,10 @@ export default function HeroCanvas() {
       if (cancelled) return;
       const reduced = prefersReducedMotion();
       const isLight = () => document.documentElement.getAttribute("data-theme") === "light";
+      // Les couleurs viennent des tokens CSS : changer la palette dans
+      // globals.css suffit, le shader suit.
+      const cssVar = (name: string, fallback: string) =>
+        getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
 
       const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: "high-performance" });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
@@ -59,8 +63,8 @@ export default function HeroCanvas() {
         uniforms: {
           uTime: { value: 0 },
           uMouse: { value: new THREE.Vector2(0, 0) },
-          uColor: { value: new THREE.Color("#ffa028") },
-          uWhite: { value: new THREE.Color("#ece8e1") },
+          uColor: { value: new THREE.Color(cssVar("--accent", "#fbf7f0")) },
+          uWhite: { value: new THREE.Color(cssVar("--fg", "#ece8e1")) },
           uDpr: { value: renderer.getPixelRatio() },
           uDark: { value: isLight() ? 0.0 : 1.0 },
         },
@@ -100,7 +104,7 @@ export default function HeroCanvas() {
 
       // Horizon : ligne d'axe de piste, en pointillés via un LineDashedMaterial.
       const axisGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0.02, 5), new THREE.Vector3(0, 0.02, -200)]);
-      const axis = new THREE.Line(axisGeo, new THREE.LineDashedMaterial({ color: 0xffa028, dashSize: 1.5, gapSize: 2, transparent: true, opacity: 0.5 }));
+      const axis = new THREE.Line(axisGeo, new THREE.LineDashedMaterial({ color: new THREE.Color(cssVar("--accent", "#fbf7f0")), dashSize: 1.5, gapSize: 2, transparent: true, opacity: 0.5 }));
       axis.computeLineDistances();
       scene.add(axis);
 
@@ -118,7 +122,13 @@ export default function HeroCanvas() {
       };
       window.addEventListener("resize", onResize);
 
-      const themeObs = new MutationObserver(() => { mat.uniforms.uDark.value = isLight() ? 0 : 1; });
+      const themeObs = new MutationObserver(() => {
+        mat.uniforms.uDark.value = isLight() ? 0 : 1;
+        mat.uniforms.uColor.value.set(cssVar("--accent", "#fbf7f0"));
+        mat.uniforms.uWhite.value.set(cssVar("--fg", "#ece8e1"));
+        (axis.material as InstanceType<typeof THREE.LineDashedMaterial>).color.set(cssVar("--accent", "#fbf7f0"));
+        if (reduced) renderer.render(scene, camera);
+      });
       themeObs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
       let visible = true;

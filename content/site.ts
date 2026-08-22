@@ -1,10 +1,11 @@
 import type { Lang } from "./types";
+import { aviation as av, identity } from "./config";
 
-// TODO(Nicolas) : liens réels.
+// Les vraies valeurs vivent dans content/config.ts.
 export const socials = {
-  linkedin: "https://www.linkedin.com/in/nicolas-xxxx",
-  github: "https://github.com/njegou",
-  email: "hello@nicolas.example",
+  linkedin: identity.linkedin,
+  github: identity.github,
+  email: identity.email,
 };
 
 export const dict = {
@@ -57,13 +58,9 @@ export const dict = {
       label: "Aviation",
       title: "Tour de piste.",
       p: "Je me forme au pilotage privé. Ce n'est pas un hobby décoratif : c'est la discipline qui structure tout le reste. Procédures, phraséologie, gestion de la charge mentale, décision sous contrainte.",
-      stats: [
-        ["Statut", "Élève pilote"],
-        ["Terrain", "LFPN Toussus"],
-        ["Avion", "DR400 / PA28"],
-        ["Objectif", "PPL(A)"],
-      ],
+      stats: [["Statut", "Élève pilote"], ["Terrain", av.airfield], ["Avion", av.aircraft], ["Objectif", av.goal]],
       strip: "FPL N-DMXG DR40 LFPN 1030 LFPT LFPN 0045",
+      legs: ["Vent arrière", "Base", "Finale"],
     },
     contact: {
       label: "Contact",
@@ -79,6 +76,7 @@ export const dict = {
       noEndpoint: "Formulaire non configuré : ajoute NEXT_PUBLIC_CONTACT_ENDPOINT.",
     },
     footer: { made: "Conçu et codé par Nicolas", rights: "Tous droits réservés", top: "Haut de page" },
+    a11y: { skip: "Aller au contenu", navMain: "Navigation principale", navMobile: "Navigation mobile", home: "Nicolas, retour à l'accueil", circuit: "Schéma d'un tour de piste : vent arrière, base, finale" },
     marquee: ["Next.js", "TypeScript", "n8n", "Salesforce", "Three.js", "GSAP", "Python", "Docker", "LinkedIn", "PPL(A)", "Agents IA", "PWA"],
     konami: { title: "Cleared for takeoff", sub: "Piste 25, vent 240/08. Bon vol." },
     theme: { dark: "Passer en mode sombre", light: "Passer en mode clair" },
@@ -121,8 +119,9 @@ export const dict = {
       label: "Aviation",
       title: "Traffic pattern.",
       p: "I'm training for a private pilot licence. Not a decorative hobby: it's the discipline that structures everything else. Procedures, phraseology, workload management, decisions under constraint.",
-      stats: [["Status", "Student pilot"], ["Airfield", "LFPN Toussus"], ["Aircraft", "DR400 / PA28"], ["Goal", "PPL(A)"]],
+      stats: [["Status", "Student pilot"], ["Airfield", av.airfield], ["Aircraft", av.aircraft], ["Goal", av.goal]],
       strip: "FPL N-DMXG DR40 LFPN 1030 LFPT LFPN 0045",
+      legs: ["Downwind", "Base", "Final"],
     },
     contact: {
       label: "Contact",
@@ -134,6 +133,7 @@ export const dict = {
       noEndpoint: "Form not configured: set NEXT_PUBLIC_CONTACT_ENDPOINT.",
     },
     footer: { made: "Designed and coded by Nicolas", rights: "All rights reserved", top: "Back to top" },
+    a11y: { skip: "Skip to content", navMain: "Main navigation", navMobile: "Mobile navigation", home: "Nicolas, back to home", circuit: "Traffic pattern diagram: downwind, base, final" },
     marquee: ["Next.js", "TypeScript", "n8n", "Salesforce", "Three.js", "GSAP", "Python", "Docker", "LinkedIn", "PPL(A)", "AI agents", "PWA"],
     konami: { title: "Cleared for takeoff", sub: "Runway 25, wind 240/08. Safe flight." },
     theme: { dark: "Switch to dark mode", light: "Switch to light mode" },

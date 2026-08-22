@@ -1,6 +1,6 @@
 "use client";
 import { useRef, type ElementType } from "react";
-import { useGsap } from "@/lib/motion";
+import { isReady, useGsap } from "@/lib/motion";
 
 interface Props {
   text: string | string[];
@@ -28,6 +28,9 @@ export default function SplitText({ text, as: Tag = "h2", className = "", mode =
     gsap.set(targets, { yPercent: 110, rotate: 4, opacity: 0 });
     const play = () => gsap.to(targets, { yPercent: 0, rotate: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger, delay });
     if (trigger === "event") {
+      // Si le préloader est déjà passé (changement de langue, navigation
+      // interne), on joue tout de suite au lieu d'attendre l'événement.
+      if (isReady()) { play(); return; }
       const h = () => play();
       window.addEventListener("preloader:done", h, { once: true });
       return () => window.removeEventListener("preloader:done", h);

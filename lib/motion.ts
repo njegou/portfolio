@@ -15,6 +15,19 @@ export function useReducedMotion() {
   return reduced;
 }
 
+/**
+ * Le préloader ne joue qu'une fois par session. Ce drapeau permet aux
+ * animations déclenchées par "preloader:done" de savoir que l'événement
+ * est déjà passé (sinon elles attendent un signal qui ne reviendra pas,
+ * par exemple après un changement de langue qui remonte les composants).
+ */
+let ready = false;
+export const markReady = () => {
+  ready = true;
+  window.dispatchEvent(new Event("preloader:done"));
+};
+export const isReady = () => ready;
+
 export const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

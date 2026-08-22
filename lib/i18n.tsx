@@ -20,6 +20,15 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("lang", l);
     document.documentElement.lang = l;
   };
+
+  // Les textes FR et EN n'ont pas la même longueur : sans ce refresh, les
+  // sections épinglées gardent les mesures de l'ancienne langue.
+  useEffect(() => {
+    const id = setTimeout(() => {
+      import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => ScrollTrigger.refresh()).catch(() => {});
+    }, 120);
+    return () => clearTimeout(id);
+  }, [lang]);
   // Le dict EN est structurellement identique au FR : cast sûr.
   return <I18nCtx.Provider value={{ lang, t: dict[lang] as unknown as Dict, setLang }}>{children}</I18nCtx.Provider>;
 }

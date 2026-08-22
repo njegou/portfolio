@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 import { useRef } from "react";
 import { useI18n } from "@/lib/i18n";
-import { useGsap } from "@/lib/motion";
+import { isReady, useGsap } from "@/lib/motion";
 import SplitText from "./SplitText";
 import Scramble from "./Scramble";
 import Magnetic from "./Magnetic";
@@ -18,7 +18,8 @@ export default function Hero() {
     const el = root.current!;
     gsap.set(".hero-fade", { opacity: 0, y: 24 });
     const enter = () => gsap.to(".hero-fade", { opacity: 1, y: 0, duration: 1.2, ease: "expo.out", stagger: 0.12, delay: 0.4 });
-    window.addEventListener("preloader:done", enter, { once: true });
+    if (isReady()) enter();
+    else window.addEventListener("preloader:done", enter, { once: true });
     gsap.to(".hero-content", { yPercent: -25, opacity: 0, ease: "none", scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true } });
     gsap.to(".hero-canvas", { yPercent: 15, ease: "none", scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true } });
     return () => window.removeEventListener("preloader:done", enter);

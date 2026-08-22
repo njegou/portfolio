@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { loadGsap, prefersReducedMotion } from "@/lib/motion";
+import { loadGsap, markReady, prefersReducedMotion } from "@/lib/motion";
 import { useI18n } from "@/lib/i18n";
 
 /**
@@ -16,7 +16,7 @@ export default function Preloader() {
   useEffect(() => {
     if (sessionStorage.getItem("preloaded") || prefersReducedMotion()) {
       setDone(true);
-      window.dispatchEvent(new Event("preloader:done"));
+      markReady();
       return;
     }
     document.documentElement.classList.add("lenis-stopped");
@@ -29,7 +29,7 @@ export default function Preloader() {
           sessionStorage.setItem("preloaded", "1");
           document.documentElement.classList.remove("lenis-stopped");
           setDone(true);
-          window.dispatchEvent(new Event("preloader:done"));
+          markReady();
         },
       });
       tl.to(counter, {
@@ -51,7 +51,7 @@ export default function Preloader() {
           <p className="font-mono text-xs tracking-[0.3em] uppercase text-muted mb-3">{t.preloader}</p>
           <div className="flex gap-2" aria-hidden>
             {Array.from({ length: 14 }).map((_, i) => (
-              <span key={i} className="pl-light h-1.5 w-6 rounded-full bg-accent opacity-10" />
+              <span key={i} className="pl-light lit h-1.5 w-6 rounded-full bg-accent opacity-10" />
             ))}
           </div>
         </div>

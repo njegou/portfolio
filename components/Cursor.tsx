@@ -47,7 +47,7 @@ export default function Cursor() {
 
   return (
     <>
-      <div ref={dot} className="fixed top-0 left-0 z-[80] size-2 -ml-1 -mt-1 rounded-full bg-accent pointer-events-none mix-blend-difference" aria-hidden />
+      <div ref={dot} className="fixed top-0 left-0 z-[80] size-2 -ml-1 -mt-1 rounded-full bg-accent pointer-events-none" aria-hidden />
       <div ref={ring} className="fixed top-0 left-0 z-[80] size-8 -ml-4 -mt-4 rounded-full border border-accent grid place-items-center font-mono text-[6px] uppercase tracking-wider text-accent pointer-events-none" aria-hidden />
     </>
   );
